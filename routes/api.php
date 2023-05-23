@@ -20,6 +20,7 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 Route::group(
     ['middleware' => 'auth:sanctum'],
     function () {
+        //profile
         Route::get('/profile', [ProfileController::class, 'getProfile']);
         Route::put('/profile', [ProfileController::class, 'updateProfile']);
 
