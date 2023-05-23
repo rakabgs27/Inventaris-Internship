@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Validator;
 class ProfileController extends Controller
 {
     /**
-     * Get the authenticated user's profile.
-     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */

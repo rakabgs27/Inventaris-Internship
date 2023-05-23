@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ProfileController;
+use App\Http\Controllers\API\InventoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,6 @@ Route::group(
     function () {
         Route::get('/profile', [ProfileController::class, 'getProfile']);
         Route::put('/profile', [ProfileController::class, 'updateProfile']);
+        Route::post('/inventory', [InventoryController::class, 'addInventory']);
     }
 );
