@@ -16,7 +16,6 @@ class InventoryController extends Controller
         $inventory = Inventory::all();
         $message = 'Data Inventaris Berhasil Ditemukan';
 
-
         return response()->json([
             'status' => true,
             'data' => InventoryResource::collection($inventory),
