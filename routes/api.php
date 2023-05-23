@@ -26,6 +26,5 @@ Route::group(
 
         //inventory
         Route::apiResource('inventory', InventoryController::class);
-        Route::get('/inventory/{id}', [InventoryController::class, 'getInventoryById']);
     }
 );
