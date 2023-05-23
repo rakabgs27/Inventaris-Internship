@@ -121,4 +121,26 @@ class InventoryController extends Controller
             'message' => 'Inventaris tidak ditemukan',
         ], 404);
     }
+
+    public function getInventory()
+    {
+        // Ambil semua data inventaris
+        $inventory = Inventory::all();
+
+        // Jika ada data inventaris, kirim respon dengan daftar inventaris
+        if ($inventory->count() > 0) {
+            return response()->json([
+                'status' => true,
+                'data' => $inventory,
+                'message' => 'Berhasil mendapatkan daftar inventaris',
+            ], 200);
+        }
+
+        // Jika tidak ada data inventaris, kirim respon kosong
+        return response()->json([
+            'status' => false,
+            'data' => [],
+            'message' => 'Tidak ada inventaris yang tersedia',
+        ], 200);
+    }
 }
