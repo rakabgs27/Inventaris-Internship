@@ -22,10 +22,9 @@ Route::group(
     function () {
         Route::get('/profile', [ProfileController::class, 'getProfile']);
         Route::put('/profile', [ProfileController::class, 'updateProfile']);
-        Route::post('/inventory', [InventoryController::class, 'addInventory']);
-        Route::put('/inventory/{id}', [InventoryController::class, 'updateInventory']);
-        Route::delete('/inventory/{id}', [InventoryController::class, 'deleteInventory']);
-        Route::get('/inventory', [InventoryController::class, 'getInventory']);
+
+        //inventory
+        Route::apiResource('inventory', InventoryController::class);
         Route::get('/inventory/{id}', [InventoryController::class, 'getInventoryById']);
     }
 );

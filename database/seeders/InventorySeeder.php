@@ -15,19 +15,19 @@ class InventorySeeder extends Seeder
     public function run()
     {
         Inventory::create([
-            'nama_barang' => 'Barang Merk 1',
+            'nama_barang' => 'Barang Merk A',
             'harga' => 20000,
             'jumlah' => 10,
         ]);
 
         Inventory::create([
-            'nama_barang' => 'Barang Merk 2',
+            'nama_barang' => 'Barang Merk B',
             'harga' => 30000,
             'jumlah' => 5,
         ]);
 
         Inventory::create([
-            'nama_barang' => 'Barang Merk 3',
+            'nama_barang' => 'Barang Merk C',
             'harga' => 30000,
             'jumlah' => 7,
         ]);
