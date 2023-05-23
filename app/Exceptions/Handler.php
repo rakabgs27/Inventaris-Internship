@@ -7,6 +7,7 @@ use Throwable;
 use Illuminate\Http\Response;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -39,6 +40,13 @@ class Handler extends ExceptionHandler
             'data' => null,
             'message' => 'Data tidak ditemukan',
         ], Response::HTTP_NOT_FOUND);
+    }
+    if ($exception instanceof MethodNotAllowedHttpException) {
+        return response()->json([
+            'status' => false,
+            'data' => null,
+            'message' => 'Metode tidak diizinkan',
+        ], Response::HTTP_METHOD_NOT_ALLOWED);
     }
 
     return parent::render($request, $exception);

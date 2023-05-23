@@ -1,8 +1,6 @@
 <?php
-
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Http\Resources\UserResource;
@@ -14,14 +12,17 @@ class AuthController extends Controller
     {
         $messageBerhasil = 'Login berhasil';
         $messageGagal = 'Login gagal. Email atau password salah';
+
         if (Auth::attempt($request->only('email', 'password'))) {
             $user = Auth::user();
             $token = $user->createToken('API Token')->plainTextToken;
 
             return response()->json([
                 'status' => true,
-                'data' => new UserResource($user),
-                'token' => $token,
+                'data' => [
+                    'user' => new UserResource($user),
+                    'token' => $token,
+                ],
                 'message' => $messageBerhasil,
             ], 200);
         }
