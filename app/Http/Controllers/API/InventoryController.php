@@ -54,4 +54,47 @@ class InventoryController extends Controller
             'message' => 'Inventaris berhasil ditambahkan',
         ], 200);
     }
+
+    public function updateInventory(Request $request, $id)
+    {
+        // Validasi inputan inventaris yang diubah
+        $validator = Validator::make($request->all(), [
+            'nama_barang' => 'required',
+            'harga' => 'required|integer|min:0',
+            'jumlah' => 'required|integer|min:0',
+        ]);
+
+        // Jika validasi gagal, kirim respon error
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => false,
+                'data' => null,
+                'message' => $validator->errors()->first(),
+            ], 400);
+        }
+
+        // Cari data inventaris berdasarkan ID
+        $inventory = Inventory::find($id);
+
+        if ($inventory) {
+            // Jika inventaris ditemukan, update data inventaris
+            $inventory->nama_barang = $request->nama_barang;
+            $inventory->harga = $request->harga;
+            $inventory->jumlah = $request->jumlah;
+            $inventory->save();
+
+            return response()->json([
+                'status' => true,
+                'data' => $inventory->id,
+                'message' => 'Inventaris berhasil diperbarui',
+            ], 200);
+        }
+
+        // Jika inventaris tidak ditemukan, kirim respon error
+        return response()->json([
+            'status' => false,
+            'data' => null,
+            'message' => 'Inventaris tidak ditemukan',
+        ], 404);
+    }
 }

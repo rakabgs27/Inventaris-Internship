@@ -23,5 +23,6 @@ Route::group(
         Route::get('/profile', [ProfileController::class, 'getProfile']);
         Route::put('/profile', [ProfileController::class, 'updateProfile']);
         Route::post('/inventory', [InventoryController::class, 'addInventory']);
+        Route::put('/inventory/{id}', [InventoryController::class, 'updateInventory']);
     }
 );
