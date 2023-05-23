@@ -97,4 +97,28 @@ class InventoryController extends Controller
             'message' => 'Inventaris tidak ditemukan',
         ], 404);
     }
+
+    public function deleteInventory($id)
+    {
+        // Cari data inventaris berdasarkan ID
+        $inventory = Inventory::find($id);
+
+        if ($inventory) {
+            // Jika inventaris ditemukan, hapus data inventaris
+            $inventory->delete();
+
+            return response()->json([
+                'status' => true,
+                'data' => null,
+                'message' => 'Inventaris berhasil dihapus',
+            ], 200);
+        }
+
+        // Jika inventaris tidak ditemukan, kirim respon error
+        return response()->json([
+            'status' => false,
+            'data' => null,
+            'message' => 'Inventaris tidak ditemukan',
+        ], 404);
+    }
 }

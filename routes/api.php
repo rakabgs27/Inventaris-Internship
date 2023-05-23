@@ -24,5 +24,6 @@ Route::group(
         Route::put('/profile', [ProfileController::class, 'updateProfile']);
         Route::post('/inventory', [InventoryController::class, 'addInventory']);
         Route::put('/inventory/{id}', [InventoryController::class, 'updateInventory']);
+        Route::delete('/inventory/{id}', [InventoryController::class, 'deleteInventory']);
     }
 );
