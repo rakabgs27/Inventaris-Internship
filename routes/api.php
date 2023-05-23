@@ -26,5 +26,6 @@ Route::group(
         Route::put('/inventory/{id}', [InventoryController::class, 'updateInventory']);
         Route::delete('/inventory/{id}', [InventoryController::class, 'deleteInventory']);
         Route::get('/inventory', [InventoryController::class, 'getInventory']);
+        Route::get('/inventory/{id}', [InventoryController::class, 'getInventoryById']);
     }
 );
